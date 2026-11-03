@@ -9,7 +9,7 @@ use solana_sdk::{
 use spl_token_2022::ID as TOKEN_2022_PROGRAM_ID;
 use spl_token_interface::ID as TOKEN_PROGRAM_ID;
 
-use crate::fixtures::{SetArbiterFixture, SetHookFixture, DEFAULT_DEPOSIT_AMOUNT};
+use crate::fixtures::{SetArbiterFixture, SetArbiterTimeoutFixture, SetHookFixture, DEFAULT_DEPOSIT_AMOUNT};
 use crate::utils::traits::{InstructionTestFixture, TestInstruction};
 use crate::utils::{find_allowed_mint_pda, find_escrow_pda, find_extensions_pda, find_receipt_pda, TestContext};
 
@@ -124,11 +124,19 @@ pub struct WithdrawSetupBuilder<'a> {
     timelock: Option<u64>,
     hook_program: Option<Pubkey>,
     arbiter: bool,
+    arbiter_timeout: Option<u64>,
 }
 
 impl<'a> WithdrawSetupBuilder<'a> {
     fn new(ctx: &'a mut TestContext) -> Self {
-        Self { ctx, token_program: TOKEN_PROGRAM_ID, timelock: None, hook_program: None, arbiter: false }
+        Self {
+            ctx,
+            token_program: TOKEN_PROGRAM_ID,
+            timelock: None,
+            hook_program: None,
+            arbiter: false,
+            arbiter_timeout: None,
+        }
     }
 
     pub fn token_2022(mut self) -> Self {
@@ -153,6 +161,12 @@ impl<'a> WithdrawSetupBuilder<'a> {
 
     pub fn arbiter(mut self) -> Self {
         self.arbiter = true;
+        self
+    }
+
+    /// PactKeeper: seconds after the deposit after which the depositor may withdraw without the arbiter.
+    pub fn arbiter_timeout(mut self, timeout: u64) -> Self {
+        self.arbiter_timeout = Some(timeout);
         self
     }
 
@@ -204,6 +218,11 @@ impl<'a> WithdrawSetupBuilder<'a> {
         } else {
             None
         };
+
+        if let Some(timeout) = self.arbiter_timeout {
+            SetArbiterTimeoutFixture::build_with_escrow(self.ctx, escrow_pda, admin.insecure_clone(), timeout)
+                .send_expect_success(self.ctx);
+        }
 
         let mint = Keypair::new();
         let token_program = self.token_program;

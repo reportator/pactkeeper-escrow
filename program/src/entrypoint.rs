@@ -4,7 +4,7 @@ use crate::{
     instructions::{
         process_add_timelock, process_allow_mint, process_block_mint, process_block_token_extension,
         process_create_escrow, process_deposit, process_emit_event, process_remove_extension, process_set_arbiter,
-        process_set_beneficiary, process_set_hook, process_set_immutable, process_settle,
+        process_set_arbiter_timeout, process_set_beneficiary, process_set_hook, process_set_immutable, process_settle,
         process_unblock_token_extension, process_update_admin, process_withdraw,
     },
     traits::EscrowInstructionDiscriminators,
@@ -46,6 +46,9 @@ pub fn process_instruction(
             process_set_beneficiary(program_id, accounts, instruction_data)
         }
         EscrowInstructionDiscriminators::Settle => process_settle(program_id, accounts, instruction_data),
+        EscrowInstructionDiscriminators::SetArbiterTimeout => {
+            process_set_arbiter_timeout(program_id, accounts, instruction_data)
+        }
         EscrowInstructionDiscriminators::EmitEvent => process_emit_event(program_id, accounts),
     }
 }

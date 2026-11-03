@@ -9,6 +9,7 @@ use super::extensions::{
     block_token_extension::{BlockTokenExtensionAccounts, BlockTokenExtensionData},
     remove_extension::{RemoveExtensionAccounts, RemoveExtensionData},
     set_arbiter::{SetArbiterAccounts, SetArbiterData},
+    set_arbiter_timeout::{SetArbiterTimeoutAccounts, SetArbiterTimeoutData},
     set_beneficiary::{SetBeneficiaryAccounts, SetBeneficiaryData},
     set_hook::{SetHookAccounts, SetHookData},
     unblock_token_extension::{UnblockTokenExtensionAccounts, UnblockTokenExtensionData},
@@ -26,6 +27,7 @@ define_instruction!(AddTimelock, AddTimelockAccounts, AddTimelockData);
 define_instruction!(BlockTokenExtension, BlockTokenExtensionAccounts, BlockTokenExtensionData);
 define_instruction!(RemoveExtension, RemoveExtensionAccounts, RemoveExtensionData);
 define_instruction!(SetArbiter, SetArbiterAccounts, SetArbiterData);
+define_instruction!(SetArbiterTimeout, SetArbiterTimeoutAccounts, SetArbiterTimeoutData);
 define_instruction!(SetBeneficiary, SetBeneficiaryAccounts, SetBeneficiaryData);
 define_instruction!(SetHook, SetHookAccounts, SetHookData);
 define_instruction!(UnblockTokenExtension, UnblockTokenExtensionAccounts, UnblockTokenExtensionData);

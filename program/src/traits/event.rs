@@ -23,6 +23,7 @@ pub enum EventDiscriminators {
     SetImmutable = 12,
     BeneficiarySet = 13,
     Settle = 14,
+    ArbiterTimeoutSet = 15,
 }
 
 /// Event discriminator with Anchor-compatible prefix

@@ -18,6 +18,8 @@ pub enum ExtensionType {
     Arbiter = 3,
     /// PactKeeper: who receives the settled share (see BeneficiaryData)
     Beneficiary = 4,
+    /// PactKeeper: refund without the arbiter after a timeout (see ArbiterTimeoutData)
+    ArbiterTimeout = 5,
 }
 
 impl TryFrom<u16> for ExtensionType {
@@ -30,6 +32,7 @@ impl TryFrom<u16> for ExtensionType {
             2 => Ok(Self::BlockedTokenExtensions),
             3 => Ok(Self::Arbiter),
             4 => Ok(Self::Beneficiary),
+            5 => Ok(Self::ArbiterTimeout),
             _ => Err(ProgramError::InvalidAccountData),
         }
     }

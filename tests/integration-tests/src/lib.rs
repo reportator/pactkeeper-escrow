@@ -14,9 +14,13 @@ mod test_create_escrow;
 #[cfg(test)]
 mod test_deposit;
 #[cfg(test)]
+mod test_pactkeeper_stages;
+#[cfg(test)]
 mod test_remove_extension;
 #[cfg(test)]
 mod test_set_arbiter;
+#[cfg(test)]
+mod test_set_arbiter_timeout;
 #[cfg(test)]
 mod test_set_hook;
 #[cfg(test)]

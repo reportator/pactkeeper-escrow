@@ -479,6 +479,35 @@ pub enum EscrowProgramInstruction {
         payout_bps: u16,
     } = 14,
 
+    /// PactKeeper: after `timeout` seconds from a deposit the depositor may withdraw it without the arbiter.
+    #[codama(account(name = "payer", docs = "Pays for extensions account creation", signer, writable))]
+    #[codama(account(name = "admin", docs = "Admin authority for the escrow", signer))]
+    #[codama(account(name = "escrow", docs = "Escrow account to set the arbiter timeout on"))]
+    #[codama(account(
+        name = "extensions",
+        docs = "Extensions PDA account to store the arbiter timeout",
+        writable,
+        default_value = pda("extensions", [seed("escrow", account("escrow"))])
+    ))]
+    #[codama(account(name = "system_program", docs = "System program", default_value = program("system")))]
+    #[codama(account(
+        name = "event_authority",
+        docs = "Event authority PDA for CPI event emission",
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
+    ))]
+    #[codama(account(
+        name = "escrow_program",
+        docs = "Escrow program for CPI event emission",
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
+    ))]
+    SetArbiterTimeout {
+        /// Bump for extensions PDA
+        #[codama(default_value = account_bump("extensions"))]
+        extensions_bump: u8,
+        /// Seconds after a deposit after which the depositor may withdraw without the arbiter (> 0)
+        timeout: u64,
+    } = 15,
+
     /// Invoked via CPI to emit event data in instruction args (prevents log truncation).
     #[codama(skip)]
     #[codama(account(

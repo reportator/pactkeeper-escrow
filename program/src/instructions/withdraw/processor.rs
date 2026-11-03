@@ -5,8 +5,8 @@ use crate::{
     events::WithdrawEvent,
     instructions::Withdraw,
     state::{
-        get_extensions_from_account, validate_extensions_pda, ArbiterData, Escrow, ExtensionType, HookData, HookPoint,
-        Receipt, TimelockData,
+        get_extensions_from_account, validate_extensions_pda, ArbiterData, ArbiterTimeoutData, Escrow, ExtensionType,
+        HookData, HookPoint, Receipt, TimelockData,
     },
     traits::{AccountDeserialize, EventSerialize, ExtensionData},
     utils::{close_pda_account, emit_event, get_mint_decimals},
@@ -43,10 +43,10 @@ pub fn process_withdraw(program_id: &Address, accounts: &[AccountView], instruct
     // Validate extensions PDA
     validate_extensions_pda(ix.accounts.escrow, ix.accounts.extensions, program_id)?;
 
-    // Get timelock, hook, and arbiter extensions in single pass
+    // Get timelock, hook, arbiter and arbiter timeout extensions in single pass
     let exts = get_extensions_from_account(
         ix.accounts.extensions,
-        &[ExtensionType::Timelock, ExtensionType::Hook, ExtensionType::Arbiter],
+        &[ExtensionType::Timelock, ExtensionType::Hook, ExtensionType::Arbiter, ExtensionType::ArbiterTimeout],
     )?;
 
     // Validate timelock if present
@@ -58,12 +58,27 @@ pub fn process_withdraw(program_id: &Address, accounts: &[AccountView], instruct
     // Parse hook if present
     let hook_data = exts[1].as_ref().map(|b| HookData::from_bytes(b)).transpose()?;
 
-    // Validate arbiter if present — arbiter is first in remaining_accounts
+    // Validate arbiter if present — arbiter is first in remaining_accounts.
+    // PactKeeper: once the arbiter timeout for this deposit has passed, the arbiter's signature is no longer
+    // required (refund without the oracle). An arbiter account passed anyway is skipped, not validated.
+    let arbiter_timed_out = match exts[3] {
+        Some(ref timeout_bytes) => ArbiterTimeoutData::from_bytes(timeout_bytes)?.is_expired(deposited_at)?,
+        None => false,
+    };
     let remaining_accounts = if let Some(ref arbiter_bytes) = exts[2] {
         let arbiter = ArbiterData::from_bytes(arbiter_bytes)?;
-        arbiter.validate(ix.accounts.remaining_accounts)?;
-        // Skip arbiter account, pass rest to hook
-        ix.accounts.remaining_accounts.get(1..).unwrap_or(&[])
+        let arbiter_passed = ix.accounts.remaining_accounts.first().is_some_and(|a| a.address() == &arbiter.arbiter);
+        if arbiter_timed_out {
+            if arbiter_passed {
+                ix.accounts.remaining_accounts.get(1..).unwrap_or(&[])
+            } else {
+                ix.accounts.remaining_accounts
+            }
+        } else {
+            arbiter.validate(ix.accounts.remaining_accounts)?;
+            // Skip arbiter account, pass rest to hook
+            ix.accounts.remaining_accounts.get(1..).unwrap_or(&[])
+        }
     } else {
         ix.accounts.remaining_accounts
     };
