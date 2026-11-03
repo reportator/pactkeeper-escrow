@@ -72,6 +72,18 @@ pub enum EscrowProgramError {
     /// (16) Escrow is immutable and cannot be modified
     #[error("Escrow is immutable and cannot be modified")]
     EscrowImmutable,
+
+    /// (17) Payout share must be between 0 and 10000 basis points
+    #[error("Payout share must be between 0 and 10000 basis points")]
+    InvalidPayoutBps,
+
+    /// (18) Settle requires an arbiter and a beneficiary on the escrow
+    #[error("Settle requires an arbiter and a beneficiary on the escrow")]
+    SettleNotConfigured,
+
+    /// (19) Beneficiary account does not match the escrow beneficiary
+    #[error("Beneficiary account does not match the escrow beneficiary")]
+    InvalidBeneficiary,
 }
 
 impl From<EscrowProgramError> for ProgramError {

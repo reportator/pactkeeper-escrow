@@ -21,6 +21,8 @@ pub enum EventDiscriminators {
     ExtensionRemoved = 10,
     TokenExtensionUnblocked = 11,
     SetImmutable = 12,
+    BeneficiarySet = 13,
+    Settle = 14,
 }
 
 /// Event discriminator with Anchor-compatible prefix

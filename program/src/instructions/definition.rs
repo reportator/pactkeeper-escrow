@@ -20,12 +20,12 @@ pub enum EscrowProgramInstruction {
     #[codama(account(
         name = "event_authority",
         docs = "Event authority PDA for CPI event emission",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
         docs = "Escrow program for CPI event emission",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     CreatesEscrow {
         /// Bump for the escrow PDA
@@ -47,12 +47,12 @@ pub enum EscrowProgramInstruction {
     #[codama(account(
         name = "event_authority",
         docs = "Event authority PDA for CPI event emission",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
         docs = "Escrow program for CPI event emission",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     AddTimelock {
         /// Bump for extensions PDA
@@ -76,12 +76,12 @@ pub enum EscrowProgramInstruction {
     #[codama(account(
         name = "event_authority",
         docs = "Event authority PDA for CPI event emission",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
         docs = "Escrow program for CPI event emission",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     SetHook {
         /// Bump for extensions PDA
@@ -130,12 +130,12 @@ pub enum EscrowProgramInstruction {
     #[codama(account(
         name = "event_authority",
         docs = "Event authority PDA for CPI event emission",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
         docs = "Escrow program for CPI event emission",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     #[codama(account(
         name = "extensions",
@@ -157,12 +157,12 @@ pub enum EscrowProgramInstruction {
     #[codama(account(
         name = "event_authority",
         docs = "Event authority PDA for CPI event emission",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
         docs = "Escrow program for CPI event emission",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     UpdateAdmin {} = 4,
 
@@ -194,12 +194,12 @@ pub enum EscrowProgramInstruction {
     #[codama(account(
         name = "event_authority",
         docs = "Event authority PDA for CPI event emission",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
         docs = "Escrow program for CPI event emission",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     Withdraw {} = 5,
 
@@ -236,12 +236,12 @@ pub enum EscrowProgramInstruction {
     #[codama(account(
         name = "event_authority",
         docs = "Event authority PDA for CPI event emission",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
         docs = "Escrow program for CPI event emission",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     AllowMint {
         /// Bump for the allowed_mint PDA
@@ -264,12 +264,12 @@ pub enum EscrowProgramInstruction {
     #[codama(account(
         name = "event_authority",
         docs = "Event authority PDA for CPI event emission",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
         docs = "Escrow program for CPI event emission",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     BlockMint {} = 7,
 
@@ -287,12 +287,12 @@ pub enum EscrowProgramInstruction {
     #[codama(account(
         name = "event_authority",
         docs = "Event authority PDA for CPI event emission",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
         docs = "Escrow program for CPI event emission",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     BlockTokenExtension {
         /// Bump for extensions PDA
@@ -315,11 +315,11 @@ pub enum EscrowProgramInstruction {
     #[codama(account(name = "system_program", default_value = program("system")))]
     #[codama(account(
         name = "event_authority",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     SetArbiter {
         /// Bump for extensions PDA
@@ -341,12 +341,12 @@ pub enum EscrowProgramInstruction {
     #[codama(account(
         name = "event_authority",
         docs = "Event authority PDA for CPI event emission",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
         docs = "Escrow program for CPI event emission",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     RemoveExtension {
         /// Bump for extensions PDA
@@ -370,12 +370,12 @@ pub enum EscrowProgramInstruction {
     #[codama(account(
         name = "event_authority",
         docs = "Event authority PDA for CPI event emission",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
         docs = "Escrow program for CPI event emission",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     UnblockTokenExtension {
         /// Bump for extensions PDA
@@ -391,14 +391,93 @@ pub enum EscrowProgramInstruction {
     #[codama(account(
         name = "event_authority",
         docs = "Event authority PDA for CPI event emission",
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     #[codama(account(
         name = "escrow_program",
         docs = "Escrow program for CPI event emission",
-        default_value = public_key("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg")
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
     ))]
     SetImmutable {} = 12,
+
+    /// PactKeeper: set the beneficiary (contractor) who receives the settled share of deposits.
+    #[codama(account(name = "payer", docs = "Pays for extensions account creation", signer, writable))]
+    #[codama(account(name = "admin", docs = "Admin authority for the escrow", signer))]
+    #[codama(account(name = "beneficiary", docs = "Address that receives the settled share"))]
+    #[codama(account(name = "escrow", docs = "Escrow account to set the beneficiary on"))]
+    #[codama(account(
+        name = "extensions",
+        docs = "Extensions PDA account to store the beneficiary",
+        writable,
+        default_value = pda("extensions", [seed("escrow", account("escrow"))])
+    ))]
+    #[codama(account(name = "system_program", docs = "System program", default_value = program("system")))]
+    #[codama(account(
+        name = "event_authority",
+        docs = "Event authority PDA for CPI event emission",
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
+    ))]
+    #[codama(account(
+        name = "escrow_program",
+        docs = "Escrow program for CPI event emission",
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
+    ))]
+    SetBeneficiary {
+        /// Bump for extensions PDA
+        #[codama(default_value = account_bump("extensions"))]
+        extensions_bump: u8,
+    } = 13,
+
+    /// PactKeeper: the arbiter splits a deposit receipt between the beneficiary and the depositor.
+    #[codama(account(name = "arbiter", docs = "Arbiter (PactKeeper oracle) authorizing the settlement", signer))]
+    #[codama(account(name = "escrow", docs = "Escrow account holding the deposit"))]
+    #[codama(account(
+        name = "extensions",
+        docs = "Extensions PDA with arbiter and beneficiary",
+        default_value = pda("extensions", [seed("escrow", account("escrow"))])
+    ))]
+    #[codama(account(name = "receipt", docs = "Deposit receipt to settle and close", writable))]
+    #[codama(account(
+        name = "vault",
+        docs = "Escrow vault token account to transfer from",
+        writable,
+        default_value = pda("associatedToken", program = "associatedToken", [seed("owner", account("escrow")), seed("tokenProgram", account("tokenProgram")), seed("mint", account("mint"))])
+    ))]
+    #[codama(account(
+        name = "depositor",
+        docs = "Depositor of the receipt (client); receives the receipt rent",
+        writable
+    ))]
+    #[codama(account(
+        name = "depositor_token_account",
+        docs = "Depositor's token account for the remainder",
+        writable,
+        default_value = pda("associatedToken", program = "associatedToken", [seed("owner", account("depositor")), seed("tokenProgram", account("tokenProgram")), seed("mint", account("mint"))])
+    ))]
+    #[codama(account(name = "beneficiary", docs = "Beneficiary stored on the escrow (contractor)"))]
+    #[codama(account(
+        name = "beneficiary_token_account",
+        docs = "Beneficiary's token account for the payout",
+        writable,
+        default_value = pda("associatedToken", program = "associatedToken", [seed("owner", account("beneficiary")), seed("tokenProgram", account("tokenProgram")), seed("mint", account("mint"))])
+    ))]
+    #[codama(account(name = "mint", docs = "Token mint of the deposit"))]
+    #[codama(account(name = "token_program", docs = "SPL Token program", default_value = program("token")))]
+    #[codama(account(name = "system_program", docs = "System program", default_value = program("system")))]
+    #[codama(account(
+        name = "event_authority",
+        docs = "Event authority PDA for CPI event emission",
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
+    ))]
+    #[codama(account(
+        name = "escrow_program",
+        docs = "Escrow program for CPI event emission",
+        default_value = public_key("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa")
+    ))]
+    Settle {
+        /// Share for the beneficiary in basis points (0..=10000)
+        payout_bps: u16,
+    } = 14,
 
     /// Invoked via CPI to emit event data in instruction args (prevents log truncation).
     #[codama(skip)]
@@ -406,7 +485,7 @@ pub enum EscrowProgramInstruction {
         name = "event_authority",
         docs = "Event authority PDA that must sign via CPI",
         signer,
-        default_value = public_key("Eq63FWYo9DXgwoTnpK9gjp7BH4PyhSPo11zEF9FK7f4M")
+        default_value = public_key("Gcxzb7tQJ84wonr1PMS3WuqHfoBz1xG99usUHYXwZV5T")
     ))]
     EmitEvent {} = 228,
 }

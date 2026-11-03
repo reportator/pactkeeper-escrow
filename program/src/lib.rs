@@ -29,7 +29,7 @@ pub mod state;
 #[cfg(not(feature = "no-entrypoint"))]
 pub mod entrypoint;
 
-declare_id!("Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg");
+declare_id!("Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa");
 
 #[cfg(not(feature = "no-entrypoint"))]
 use solana_security_txt::security_txt;

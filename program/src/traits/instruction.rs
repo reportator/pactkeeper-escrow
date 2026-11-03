@@ -16,6 +16,8 @@ pub enum EscrowInstructionDiscriminators {
     RemoveExtension = 10,
     UnblockTokenExtension = 11,
     SetImmutable = 12,
+    SetBeneficiary = 13,
+    Settle = 14,
     EmitEvent = 228,
 }
 
@@ -37,6 +39,8 @@ impl TryFrom<u8> for EscrowInstructionDiscriminators {
             10 => Ok(Self::RemoveExtension),
             11 => Ok(Self::UnblockTokenExtension),
             12 => Ok(Self::SetImmutable),
+            13 => Ok(Self::SetBeneficiary),
+            14 => Ok(Self::Settle),
             228 => Ok(Self::EmitEvent),
             _ => Err(ProgramError::InvalidInstructionData),
         }
@@ -174,8 +178,17 @@ mod tests {
     }
 
     #[test]
+    fn test_discriminator_try_from_pactkeeper() {
+        assert!(matches!(
+            EscrowInstructionDiscriminators::try_from(13u8),
+            Ok(EscrowInstructionDiscriminators::SetBeneficiary)
+        ));
+        assert!(matches!(EscrowInstructionDiscriminators::try_from(14u8), Ok(EscrowInstructionDiscriminators::Settle)));
+    }
+
+    #[test]
     fn test_discriminator_try_from_invalid() {
-        let result = EscrowInstructionDiscriminators::try_from(13u8);
+        let result = EscrowInstructionDiscriminators::try_from(15u8);
         assert!(matches!(result, Err(ProgramError::InvalidInstructionData)));
 
         let result = EscrowInstructionDiscriminators::try_from(255u8);
