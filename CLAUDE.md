@@ -2,6 +2,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## PactKeeper fork — read first
+
+Fork of `solana-foundation/escrow` for PactKeeper (public repo `reportator/pactkeeper-escrow`, `upstream` = solana-foundation). Runs on **Solana devnet** only, with the test token tPACT; the server of `reportator/pactkeeper-activity` is the only client (Codama TS client, `@solana/kit`).
+
+- PactKeeper additions: `SetBeneficiary`, `Settle(payout_bps)` signed by the arbiter (oracle), refund = `Withdraw` with the arbiter, `SetArbiterTimeout` (refund without the oracle after a timeout); admin is fixed by `SetImmutable` at creation. Extend this fork, do not start a separate Anchor program.
+- Our program ID: `Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa` (the upstream ID further below is historical).
+- Build and tests run in WSL (Ubuntu): `just build`, `just integration-test`. After changing instructions, regenerate clients and update the copy in `pactkeeper-activity/server/chain/escrow`.
+- Rules from the owner: talk to him in Ukrainian (no Russian words); never put keys or keypairs (`/keypairs`, `.env`) into chat, code or commits; he commits, pushes and deploys himself. Any change to money flows (Settle, Withdraw, timeouts) needs a security review against the checklist: access control, PDA seeds, CPI, initialization, authority, arithmetic.
+- `Claude outputs/` is a local scratch folder, not part of the repo.
+
 ## Required Versions
 
 - **Rust**: See `rust-toolchain.toml` (auto-installed by rustup)
@@ -163,7 +173,7 @@ PDAs use the `PdaSeeds` trait on state structs (seeds co-located with data):
 
 ### Program ID
 
-`Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg`
+Upstream: `Escrowae7RaUfNn4oEZHywMXE5zWzYCXenwrCDaEoifg`. PactKeeper devnet: `Dp5R7figeLN9rNqWSjftD3RwRnvFWfz1tSy24GhvmYGa` (`program/src/lib.rs`).
 
 ## Conventions
 
